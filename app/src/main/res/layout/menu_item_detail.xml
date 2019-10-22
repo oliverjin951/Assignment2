@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/foodDescDetail"
         android:layout_width="369dp"
-        android:layout_height="99dp"
+        android:layout_height="105dp"
         android:layout_marginTop="136dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
