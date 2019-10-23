@@ -5,9 +5,10 @@ public class MenuItems {
     private int foodID;
     private String foodName;
     private String foodDesc;
-    private String price;
+    private double price;
     private String foodDetailedDesc;
-
+    private int numOrdered;
+    private int foodImage;
 
     public int getFoodID() {
         return foodID;
@@ -33,11 +34,11 @@ public class MenuItems {
         this.foodDesc = foodDesc;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -49,12 +50,30 @@ public class MenuItems {
         this.foodDetailedDesc = foodDetailedDesc;
     }
 
-    public MenuItems(int foodID, String foodName, String foodDesc, String price, String foodDetailedDesc) {
+    public int getNumOrdered() {
+        return numOrdered;
+    }
+
+    public void setNumOrdered(int numOrdered) {
+        this.numOrdered = numOrdered;
+    }
+
+    public int getFoodImage() {
+        return foodImage;
+    }
+
+    public void setFoodImage(int foodImage) {
+        this.foodImage = foodImage;
+    }
+
+    public MenuItems(int foodID, String foodName, String foodDesc, double price, String foodDetailedDesc, int numOrdered, int foodImage ) {
         this.foodID = foodID;
         this.foodName = foodName;
         this.foodDesc = foodDesc;
         this.price = price;
         this.foodDetailedDesc= foodDetailedDesc;
+        this.numOrdered = numOrdered;
+        this.foodImage = foodImage;
 
     }
 

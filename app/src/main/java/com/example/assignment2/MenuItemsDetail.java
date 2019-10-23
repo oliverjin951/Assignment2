@@ -3,6 +3,7 @@ package com.example.assignment2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -14,7 +15,10 @@ public class MenuItemsDetail extends AppCompatActivity {
     private TextView priceText;
     private TextView foodIngredients;
     private TextView addToOrder;
-    private TextView addedToOrder;
+
+    private ImageView foodPic1;
+    private int FoodID;
+    private int Quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,10 @@ public class MenuItemsDetail extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                addedToOrder.setText("Added " + numberPicker.getValue() + " to your Order!");
+                Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                intent1.putExtra("FoodID", FoodID);
+                intent1.putExtra("Quantity", Quantity);
+                startActivity(intent1);
             }
         });
 
@@ -42,13 +49,12 @@ public class MenuItemsDetail extends AppCompatActivity {
         foodDescText = findViewById(R.id.foodDescDetail);
         priceText = findViewById(R.id.foodPrice1);
         foodIngredients = findViewById(R.id.foodIngred1);
-        addedToOrder = findViewById(R.id.addedToOrder);
 
 
         foodNameText.setText(menuItems.getFoodName());
         foodDescText.setText(menuItems.getFoodDetailedDesc());
-        priceText.setText(menuItems.getPrice());
         foodIngredients.setText(menuItems.getFoodDesc());
+        priceText.setText("$"+ menuItems.getPrice());
 
         //        Spinner spinner = findViewById(R.id.spinner2);
 //        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.options_array, android.R.layout.simple_spinner_item);

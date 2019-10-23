@@ -1,8 +1,10 @@
 package com.example.assignment2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,8 +32,18 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        Intent intent1 = getIntent();
+        int FoodID = intent1.getIntExtra("FoodID",0);
 
-//
+        Button viewOrder = findViewById(R.id.viewOrder);
+        viewOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent intent99= new Intent(getApplicationContext(), ViewOrder.class);
+            startActivity(intent99);
+            }
+        });
+
 //        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
 //        floatingActionButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
