@@ -9,16 +9,11 @@ public class Database {
     public static MenuItems getMenuItemByID(int foodID) {
         return food.get(foodID);
     }
-
     public static ArrayList<MenuItems> getAllFood() {
         return new ArrayList<MenuItems>((List) Arrays.asList(food.values().toArray()));
-
     }
-
     public static final HashMap<Integer, MenuItems> food = new HashMap<>();
-
     static {
-
         food.put(1, new MenuItems(1,
                 "Cheeseburger",
                 "Ingredients:" + "\n" + "beef patty, cheese, pickles, onion, tomato sauce",

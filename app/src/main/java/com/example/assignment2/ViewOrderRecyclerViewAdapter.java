@@ -21,12 +21,10 @@ public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrder
     public void setOrderedItemsArray(ArrayList<MenuItems> orderedItemsArray) {
         this.orderedItemsArray = orderedItemsArray;
     }
-
     public static void setOrderCost(double orderCost){
         ViewOrderRecyclerViewAdapter.orderCost = orderCost;
     }
     public static double orderCost =0;
-
     public double getOrderCost() {
         for (int i = 0; i < orderedItemsArray.size(); i++) {
             MenuItems itemMenuObject = orderedItemsArray.get(i);
@@ -34,7 +32,6 @@ public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrder
         }
         return orderCost;
     }
-
     @NonNull
     @Override
     public OrderedItemsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,11 +39,9 @@ public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrder
        OrderedItemsViewHolder orderedItemsViewHolder = new OrderedItemsViewHolder(view);
         return orderedItemsViewHolder;
     }
-
     @Override
-    public void onBindViewHolder(@NonNull OrderedItemsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OrderedItemsViewHolder holder, final int position) {
         final MenuItems menuItems = orderedItemsArray.get(position);
-
         holder.foodNameText1.setText(menuItems.getFoodName());
         holder.foodPic1.setImageResource(menuItems.getFoodImage());
         String priceString ="$" +Double.toString(menuItems.getPrice());
@@ -55,18 +50,14 @@ public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrder
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            orderedItemsArray.remove(position);
             }
         });
-
     }
-
-
     @Override
     public int getItemCount() {
         return orderedItemsArray.size();
     }
-
     public class OrderedItemsViewHolder extends RecyclerView.ViewHolder {
         public TextView foodNameText1;
         public TextView foodQuant1;
@@ -74,7 +65,6 @@ public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrder
         public View view1;
         public ImageView foodPic1;
         public Button removeButton;
-
 
         public OrderedItemsViewHolder(@NonNull View itemView) {
             super(itemView);
