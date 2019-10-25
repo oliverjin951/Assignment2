@@ -15,10 +15,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrderRecyclerViewAdapter.OrderedItemsViewHolder> {
-    private ArrayList<MenuItems> orderedItems;
 
-    public void setOrderedItems(ArrayList<MenuItems> orderedItems) {
-        this.orderedItems= orderedItems;
+    private ArrayList<MenuItems> orderedItemsArray;
+
+    public void setOrderedItemsArray(ArrayList<MenuItems> orderedItemsArray) {
+        this.orderedItemsArray = orderedItemsArray;
+    }
+
+    public static void setOrderCost(double orderCost){
+        ViewOrderRecyclerViewAdapter.orderCost = orderCost;
+    }
+    public static double orderCost =0;
+
+    public double getOrderCost() {
+        for (int i = 0; i < orderedItemsArray.size(); i++) {
+            MenuItems itemMenuObject = orderedItemsArray.get(i);
+            orderCost += (itemMenuObject.getNumOrdered() * itemMenuObject.getPrice());
+        }
+        return orderCost;
     }
 
     @NonNull
@@ -31,7 +45,8 @@ public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrder
 
     @Override
     public void onBindViewHolder(@NonNull OrderedItemsViewHolder holder, int position) {
-        final MenuItems menuItems = orderedItems.get(position);
+        final MenuItems menuItems = orderedItemsArray.get(position);
+
         holder.foodNameText1.setText(menuItems.getFoodName());
         holder.foodPic1.setImageResource(menuItems.getFoodImage());
         String priceString ="$" +Double.toString(menuItems.getPrice());
@@ -40,15 +55,16 @@ public class ViewOrderRecyclerViewAdapter extends RecyclerView.Adapter<ViewOrder
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
     }
 
+
     @Override
     public int getItemCount() {
-        return orderedItems.size();
+        return orderedItemsArray.size();
     }
 
     public class OrderedItemsViewHolder extends RecyclerView.ViewHolder {

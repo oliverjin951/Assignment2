@@ -25,4 +25,12 @@
         android:adjustViewBounds="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myOrder" />
+
+    <TextView
+        android:id="@+id/orderCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="672dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

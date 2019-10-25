@@ -75,6 +75,16 @@ public class MenuItems {
         this.numOrdered = numOrdered;
         this.foodImage = foodImage;
 
-    }
 
+
+    }
+    public MenuItems (int foodID){
+        this.foodID = Database.getMenuItemByID(foodID).getFoodID();
+        this.foodName = Database.getMenuItemByID(foodID).getFoodName();
+        this.foodDesc = Database.getMenuItemByID(foodID).getFoodDesc();
+        this.price = Database.getMenuItemByID(foodID).getPrice();
+        this.foodDetailedDesc = Database.getMenuItemByID(foodID).getFoodDetailedDesc();
+        this.numOrdered = Database.getMenuItemByID(foodID).getNumOrdered();
+        this.foodImage = Database.getMenuItemByID(foodID).getFoodImage();
+}
 }
